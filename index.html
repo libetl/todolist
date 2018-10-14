@@ -45,6 +45,7 @@
         </main>
     </div>
 
+    <script src="src/tasks.js"></script>
     <script>
 
         const renderTable = () => `<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="float:left">
@@ -55,7 +56,7 @@
                 </tr>
                 </thead>
                 <tbody id="list">
-                    ${elements.map(element => `<tr>
+                    ${tasks.read().map(element => `<tr>
                         <td class="mdl-data-table__cell--non-numeric">${!element.done ? element.message :
                             `<span style="text-decoration: line-through;">${element.message}</span>`}</td>
                         <td>${!element.done ? element.date :
@@ -67,13 +68,13 @@
         const reRender = () => {
             document.querySelector('#table').innerHTML = renderTable()
             document.querySelector('#table').dataset.upgraded = ''
-            componentHandler.upgradeElement(document.querySelector('#table'))
+            componentHandler && componentHandler.upgradeElement(document.querySelector('#table'))
             document.querySelector('#text').value = ''
         }
 
-        const saveStorage = () => {
-            localStorage.setItem('tasks', JSON.stringify(elements))
-        }
+        const saveStorage = () =>
+            localStorage.setItem('tasks', JSON.stringify(tasks.read()))
+
 
         const getSelectedNodes = () =>
             [...document.querySelectorAll('tr.is-selected')].map(node =>
@@ -81,25 +82,23 @@
                     node.nodeName !== '#text').indexOf(node))
 
         document.querySelector('#add').onclick = () => {
-            elements.push({message: document.querySelector('#text').value,
-                date: new Date().toISOString().split('T')[0], done: false})
+            tasks.add({message: document.querySelector('#text').value})
             saveStorage()
             reRender()
         }
 
         document.querySelector('#done').onclick = () => {
-            getSelectedNodes().map(num => elements[num].done = !elements[num].done)
+            tasks.toggleDone(getSelectedNodes())
             saveStorage()
             reRender()
         }
 
         document.querySelector('#delete').onclick = () => {
-            getSelectedNodes().sort().reverse().map(num => elements.splice(num, 1))
+            tasks.remove(getSelectedNodes())
             saveStorage()
             reRender()
         }
 
-        const elements = JSON.parse(localStorage.getItem('tasks')) || []
         reRender()
     </script>
     </body>
