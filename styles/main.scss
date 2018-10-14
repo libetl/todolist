@@ -1,0 +1,17 @@
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/button/mdc-button";
+@import "~webpack-material-design-icons/material-design-icons.css";
+@import "~mdc-data-table/mdc-data-table";
+
+.mdc-top-app-bar {
+  @include mdc-top-app-bar-ink-color(teal);
+  @include mdc-states(teal);
+  top: 0px;
+  left: 0px;
+  color: white;
+  font-size: 5em;
+}
+
+body {
+  color: black;
+}

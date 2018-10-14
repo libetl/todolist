@@ -19,6 +19,18 @@
   "homepage": "https://github.com/libetl/todolist#readme",
   "devDependencies": {
     "webpack": "latest",
-    "webpack-cli": "latest"
+    "webpack-cli": "latest",
+    "extract-loader": "latest",
+    "file-loader": "latest",
+    "css-loader": "latest",
+    "sass-loader": "latest",
+    "node-sass": "latest"
+  },
+  "dependencies": {
+    "global": "latest",
+    "material-components-web": "latest",
+    "@material/auto-init": "latest",
+    "mdc-data-table": "latest",
+    "webpack-material-design-icons": "latest"
   }
 }

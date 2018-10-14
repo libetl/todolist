@@ -3,9 +3,8 @@ import {reRender} from './render'
 import {saveTasks} from './repository'
 
 const getSelectedNodes = () =>
-    [...document.querySelectorAll('tr.is-selected')].map(node =>
-        [...node.parentNode.childNodes].filter(node =>
-            node.nodeName !== '#text').indexOf(node))
+    [...document.querySelectorAll('#list input[type="checkbox"]')].filter(input =>
+            input.checked).map(input => input.value)
 
 
 export default () => {

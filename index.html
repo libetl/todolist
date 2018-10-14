@@ -1,50 +1,42 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-        <script defer src="https://code.getmdl.io/1.3.0/material.js"></script>
+        <link rel="stylesheet" href="dist/bundle.css">
         <title>Todo list</title>
     </head>
     <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Todo list sandbox</span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                </nav>
-            </div>
-        </header>
-        <main class="mdl-layout__content" style="margin: 10%;">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+        Todo app sandbox
+    </header>
+        <main class="mdc-layout__content" style="margin: 10%;">
             <h2>Manage your tasks</h2>
             <form action="#">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="text">
-                    <label class="mdl-textfield__label" for="text">Task name</label>
+                <div style="float:left" class="mdc-textfield mdc-js-textfield mdc-textfield--floating-label">
+                    <input class="mdc-textfield__input" type="text" id="text">
+                    <label class="mdc-textfield__label" for="text">Task name</label>
+                    &nbsp;
                 </div>
-                <button id="add" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+                <button id="add" class="mdc-button mdc-button--raised">
                     <i class="material-icons">add</i>
                 </button>
             </form>
-            <table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="float:left">
+            <div class="mdc-data-table mdc-data-table--select-multiple">
+              <table id="table" class="mdc-data-table__content">
                 <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Task name</th>
-                    <th>Created on</th>
-                </tr>
-                </thead>
-                <tbody id="list">
-                </tbody>
-            </table>
-            <button id="done" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+                 <tr class="mdc-data-table__row">
+                     <th class="mdc-data-table__column mdc-data-table__column--sortable">Task name</th>
+                     <th class="mdc-data-table__column mdc-data-table__column--sortable">Created on</th>
+                 </tr>
+                    </thead>
+                    <tbody id="list"></tbody>
+                </table>
+            </div>
+            <button id="done" class="mdc-button mdc-button--raised">
                 <i class="material-icons">done</i>
             </button>
-            <button id="delete" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+            <button id="delete" class="mdc-button mdc-button--raised">
                 <i class="material-icons">delete</i>
             </button>
         </main>
-    </div>
-
     <script defer src="dist/main.js"></script>
     </body>
 </html>
