@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/libetl/todolist#readme",
   "devDependencies": {
+    "babel-loader": "latest",
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "extract-loader": "latest",
