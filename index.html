@@ -46,31 +46,8 @@
     </div>
 
     <script src="src/tasks.js"></script>
+    <script src="src/render.js"></script>
     <script>
-
-        const renderTable = () => `<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="float:left">
-                <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Task name</th>
-                    <th>Created on</th>
-                </tr>
-                </thead>
-                <tbody id="list">
-                    ${tasks.read().map(element => `<tr>
-                        <td class="mdl-data-table__cell--non-numeric">${!element.done ? element.message :
-                            `<span style="text-decoration: line-through;">${element.message}</span>`}</td>
-                        <td>${!element.done ? element.date :
-                            `<span style="text-decoration: line-through;">${element.date}</span>`}</td>`)
-                              .join('')}
-                </tbody>
-            </table>`
-
-        const reRender = () => {
-            document.querySelector('#table').innerHTML = renderTable()
-            document.querySelector('#table').dataset.upgraded = ''
-            componentHandler && componentHandler.upgradeElement(document.querySelector('#table'))
-            document.querySelector('#text').value = ''
-        }
 
         const saveStorage = () =>
             localStorage.setItem('tasks', JSON.stringify(tasks.read()))
@@ -84,22 +61,22 @@
         document.querySelector('#add').onclick = () => {
             tasks.add({message: document.querySelector('#text').value})
             saveStorage()
-            reRender()
+            reRender(tasks.read())
         }
 
         document.querySelector('#done').onclick = () => {
             tasks.toggleDone(getSelectedNodes())
             saveStorage()
-            reRender()
+            reRender(tasks.read())
         }
 
         document.querySelector('#delete').onclick = () => {
             tasks.remove(getSelectedNodes())
             saveStorage()
-            reRender()
+            reRender(tasks.read())
         }
 
-        reRender()
+        reRender(tasks.read())
     </script>
     </body>
 </html>
