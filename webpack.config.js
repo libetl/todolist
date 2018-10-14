@@ -1,8 +1,10 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack')
 
 module.exports = [{
-    entry: {main:['./src', './styles/main.scss']},
+    entry: {main:['./src', './styles/main.scss',
+            'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000']},
     output: {path: path.resolve(__dirname, 'dist'), filename: 'main.js'},
     module: {
         rules: [{
@@ -37,5 +39,11 @@ module.exports = [{
     resolve: {
         extensions: ['.json','.js','.vue','.scss','.css']
     },
-    plugins: [new VueLoaderPlugin()]
+    plugins: [new VueLoaderPlugin(), new webpack.HotModuleReplacementPlugin()],
+    devServer: {
+      hot: true,
+      contentBase: [path.resolve(__dirname, 'dist'), __dirname],
+      compress: true,
+      port: 9000,
+  }
 }];
