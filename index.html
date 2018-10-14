@@ -45,13 +45,10 @@
         </main>
     </div>
 
+    <script src="src/repository.js"></script>
     <script src="src/tasks.js"></script>
     <script src="src/render.js"></script>
     <script>
-
-        const saveStorage = () =>
-            localStorage.setItem('tasks', JSON.stringify(tasks.read()))
-
 
         const getSelectedNodes = () =>
             [...document.querySelectorAll('tr.is-selected')].map(node =>
@@ -60,19 +57,19 @@
 
         document.querySelector('#add').onclick = () => {
             tasks.add({message: document.querySelector('#text').value})
-            saveStorage()
+            repository.saveTasks(tasks.read())
             reRender(tasks.read())
         }
 
         document.querySelector('#done').onclick = () => {
             tasks.toggleDone(getSelectedNodes())
-            saveStorage()
+            repository.saveTasks(tasks.read())
             reRender(tasks.read())
         }
 
         document.querySelector('#delete').onclick = () => {
             tasks.remove(getSelectedNodes())
-            saveStorage()
+            repository.saveTasks(tasks.read())
             reRender(tasks.read())
         }
 

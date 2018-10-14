@@ -1,4 +1,4 @@
-const inMemoryTasks = JSON.parse(localStorage.getItem('tasks')) || []
+const inMemoryTasks = repository.getTasks()
 
 const mustBeNumbers = numbers => Array.isArray(numbers) && numbers.every(number => !isNaN(number))
 
