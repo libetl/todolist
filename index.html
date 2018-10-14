@@ -1,42 +1,11 @@
 <html>
     <head>
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" href="dist/bundle.css">
         <title>Todo list</title>
     </head>
     <body>
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
-        Todo app sandbox
-    </header>
-        <main class="mdc-layout__content" style="margin: 10%;">
-            <h2>Manage your tasks</h2>
-            <form action="#">
-                <div style="float:left" class="mdc-textfield mdc-js-textfield mdc-textfield--floating-label">
-                    <input class="mdc-textfield__input" type="text" id="text">
-                    <label class="mdc-textfield__label" for="text">Task name</label>
-                    &nbsp;
-                </div>
-                <button id="add" class="mdc-button mdc-button--raised">
-                    <i class="material-icons">add</i>
-                </button>
-            </form>
-            <div class="mdc-data-table mdc-data-table--select-multiple">
-              <table id="table" class="mdc-data-table__content">
-                <thead>
-                 <tr class="mdc-data-table__row">
-                     <th class="mdc-data-table__column mdc-data-table__column--sortable">Task name</th>
-                     <th class="mdc-data-table__column mdc-data-table__column--sortable">Created on</th>
-                 </tr>
-                    </thead>
-                    <tbody id="list"></tbody>
-                </table>
-            </div>
-            <button id="done" class="mdc-button mdc-button--raised">
-                <i class="material-icons">done</i>
-            </button>
-            <button id="delete" class="mdc-button mdc-button--raised">
-                <i class="material-icons">delete</i>
-            </button>
-        </main>
+    <div id="app"></div>
     <script defer src="dist/main.js"></script>
     </body>
 </html>

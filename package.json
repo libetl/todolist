@@ -27,13 +27,16 @@
     "file-loader": "latest",
     "css-loader": "latest",
     "sass-loader": "latest",
-    "node-sass": "latest"
+    "node-sass": "latest",
+    "vue-loader": "latest",
+    "vue-template-compiler": "latest"
   },
   "dependencies": {
+    "@material/auto-init": "latest",
     "global": "latest",
     "material-components-web": "latest",
-    "@material/auto-init": "latest",
     "mdc-data-table": "latest",
+    "vue": "latest",
     "webpack-material-design-icons": "latest"
   }
 }

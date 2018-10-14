@@ -1,7 +1,3 @@
-import {display, reRender} from './render'
-import {read} from './tasks'
-import bind from './events'
+import {display} from './render'
 
-reRender(read())
-bind()
 display()

@@ -13,6 +13,6 @@ const toggleDone = numbers => mustBeNumbers(numbers) &&
 const remove = numbers => mustBeNumbers(numbers) &&
     [...numbers].sort().reverse().map(num => inMemoryTasks.splice(num, 1))
 
-const read = () => [...inMemoryTasks]
+const read = () => [...inMemoryTasks].map((e, i) => ({...e, id: i}))
 
 export {add, toggleDone, remove, read}
