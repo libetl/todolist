@@ -1,4 +1,6 @@
-const inMemoryTasks = repository.getTasks()
+import {getTasks} from './repository'
+
+const inMemoryTasks = getTasks()
 
 const mustBeNumbers = numbers => Array.isArray(numbers) && numbers.every(number => !isNaN(number))
 
@@ -13,4 +15,4 @@ const remove = numbers => mustBeNumbers(numbers) &&
 
 const read = () => [...inMemoryTasks]
 
-window.tasks = {add, toggleDone, remove, read}
+export {add, toggleDone, remove, read}

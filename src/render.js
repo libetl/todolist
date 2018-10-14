@@ -1,11 +1,11 @@
-window.reRender = taskList => {
+export const reRender = taskList => {
     document.querySelector('#table').innerHTML = renderTable(taskList)
     document.querySelector('#table').dataset.upgraded = ''
-    componentHandler && componentHandler.upgradeElement(document.querySelector('#table'))
+    global.componentHandler && global.componentHandler.upgradeElement(document.querySelector('#table'))
     document.querySelector('#text').value = ''
 }
 
-window.renderTable = taskList => `<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="float:left">
+export const renderTable = taskList => `<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="float:left">
                 <thead>
                 <tr>
                     <th class="mdl-data-table__cell--non-numeric">Task name</th>
