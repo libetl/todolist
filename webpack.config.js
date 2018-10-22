@@ -1,6 +1,8 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 module.exports = [{
     entry: {main:['./src', './styles/main.scss',
@@ -39,10 +41,12 @@ module.exports = [{
     resolve: {
         extensions: ['.json','.js','.vue','.scss','.css']
     },
-    plugins: [new VueLoaderPlugin(), new webpack.HotModuleReplacementPlugin()],
+    plugins: [new VueLoaderPlugin(), new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({title: 'Webpack todo app'}),
+        new HtmlWebpackIncludeAssetsPlugin({ assets: ['bundle.css'], append: true })],
     devServer: {
       hot: true,
-      contentBase: [path.resolve(__dirname, 'dist'), __dirname],
+      contentBase: path.resolve(__dirname, 'dist'),
       compress: true,
       port: 9000,
   }
